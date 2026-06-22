@@ -1,0 +1,443 @@
+/* Importação e Configuração da Fonte VCR */
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('assets/vcr.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reset de Estilos Básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000; /* Fundo totalmente preto */
+    color: #ffffff;
+    font-family: 'VCR OSD Mono', monospace;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Customização da Scrollbar Monocromática */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border: 2px solid #000000;
+}
+
+/* Textura do Fundo Animada (Aplicando filtro pb) */
+.overlay-animated {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("assets/bg.png");
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    opacity: .25;
+    z-index: 1;
+    filter: grayscale(100%);
+    animation: bgScroll 20s linear infinite;
+}
+
+@keyframes bgScroll {
+    from { background-position: 0 0; }
+    to { background-position: 300px 300px; }
+}
+
+.fundo-estatico {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url('assets/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1.0;
+    z-index: 0;
+    filter: grayscale(100%) brightness(40%); /* Força o fundo a ficar PB e mais sombrio */
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    border-top: 3px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ================= ESTRUTURA DO CARD MONOCROMÁTICO ================= */
+.main-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    background-color: #121212; /* Cinza escuro profundo */
+    border: 3px solid #ffffff; /* Borda branca marcante */
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Animação Inicial */
+.fade-in-up {
+    animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. Barra superior do tocador de música */
+.music-player-bar {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #ffffff;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #cccccc;
+}
+.music-player-bar .bc-logo {
+    color: #ffffff;
+    font-weight: bold;
+}
+.music-player-bar .music-url {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+/* 2. Barra de pesquisa decorativa */
+.search-row {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #121212;
+    border-bottom: 3px solid #ffffff;
+    gap: 12px;
+}
+.refresh-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    transition: transform 0.2s;
+}
+.refresh-btn:hover {
+    transform: rotate(180deg);
+}
+.search-box-decorator {
+    flex: 1;
+    background-color: #222222; /* Substituído o vinho por cinza escuro */
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 8px 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+/* 3. Seção do Meio: Mosaico PB */
+.profile-middle-block {
+    display: grid;
+    grid-template-columns: 140px 1fr 140px;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    background: #1a1a1a; /* Removido o gradiente colorido por um fundo cinza sólido rígido */
+    border-bottom: 3px solid #ffffff;
+}
+
+/* Forçar imagens a ficarem monocromáticas se não forem nativamente */
+.pfp-img, .plush-img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+/* Efeito sutil ao passar o mouse: a imagem ganha nitidez total ou mantém o PB estrito */
+.pfp-img:hover, .plush-img:hover {
+    filter: grayscale(100%) brightness(1.2);
+}
+
+.pfp-img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    border-radius: 20px;
+}
+
+/* Caixa de Texto Central */
+.description-col-center {
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: 1px 1px 3px #000000;
+    padding: 0 5px;
+}
+
+/* Pelúcia Plush da Direita */
+.plush-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+/* Barra de redes estáticas do meio */
+.mid-social-bar {
+    background-color: #121212;
+    border-bottom: 3px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+/* Garante que todos os ícones de redes sociais fiquem estritamente brancos */
+.mid-social-bar a {
+    color: #ffffff !important;
+}
+
+/* 4. Rodapé Inferior de Ações */
+.action-footer-row {
+    background-color: #0a0a0a;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Botão Próximo Rígido Preto e Branco */
+.next-action-btn {
+    flex: 1;
+    background-color: #000000;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    font-family: 'VCR OSD Mono', monospace;
+    font-size: 1.2rem;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+/* Inversão clássica de cor no hover (Estilo UI de Jogo Retro) */
+.next-action-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+/* Grupo de botões redondos/quadrados da direita */
+.icon-buttons-group {
+    display: flex;
+    gap: 10px;
+}
+.circle-action-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    border: 3px solid #ffffff;
+    border-radius: 12px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s, transform 0.15s;
+}
+.circle-action-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* Elementos Extras Fixos */
+.top-left-icon {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 3;
+    width: 32px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+.top-left-icon img { width: 100%; }
+
+.sifrin-miudo {
+    position: fixed;
+    right: 18px;
+    bottom: 20px;
+    width: 80px;
+    image-rendering: pixelated;
+    z-index: 4;
+    filter: grayscale(100%);
+}
+
+/* ================= ABA DE MAIS INFORMAÇÕES MONOCROMÁTICA ================= */
+.aba-conteudo {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.aba-conteudo.ativa {
+    display: flex;
+    animation: slideFadeIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideFadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.navigation-bar-top {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+.expanded-info-block {
+    background: #1a1a1a;
+    padding: 30px 25px;
+    min-height: 280px;
+    color: #ffffff;
+}
+
+.info-title {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.info-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 20px 0 10px 0;
+}
+
+.info-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+.divider-pixel {
+    height: 2px;
+    background-color: #ffffff;
+    margin: 25px 0;
+    opacity: 0.5;
+}
+
+.info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.info-list li {
+    color: #ffffff;
+}
+
+.info-list i {
+    margin-right: 8px;
+    color: #ffffff !important; /* Força todos os ícones da lista a ficarem brancos */
+}
+
+/* Customização do Botão Voltar */
+.back-btn {
+    background-color: #000000 !important;
+}
+.back-btn:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 680px) {
+    .main-container {
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    .profile-middle-block {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    .action-footer-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    .next-action-btn {
+        width: 100%;
+    }
+    .icon-buttons-group {
+        width: 100%;
+        justify-content: center;
+    }
+}
+.mid-social-bar {
+    background-color: #121212;
+    border-bottom: 3px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Ajuste o espaço entre eles aqui */
+    padding: 15px;
+}
+
+.social-img-link img {
+    width: 48px; /* Ajuste o tamanho conforme preferir */
+    height: 48px;
+    image-rendering: pixelated; /* Mantém o pixel nítido */
+    transition: transform 0.2s, opacity 0.2s;
+    display: block;
+}
+
+.social-img-link:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}

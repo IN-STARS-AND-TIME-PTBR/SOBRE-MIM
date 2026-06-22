@@ -1,0 +1,126 @@
+/* ====================================
+   FANARTS PAGE (ESTILO PERSONALIZADO)
+==================================== */
+
+.fanarts-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* CAIXA PRETA DO SLIDER */
+.fanarts-page .fanarts-slider {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6); /* Transparência combinando com os painéis do site */
+  border: 3px solid #ffffff;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+/* TRILHA EM MOVIMENTO */
+.fanarts-page .fanarts-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scrollFanarts 25s linear infinite;
+}
+
+/* Pausa o slider quando o usuário passa o mouse por cima */
+.fanarts-track:hover {
+  animation-play-state: paused;
+}
+
+/* CARD INDIVIDUAL */
+.fanarts-page .fanart-card {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+/* IMAGEM DA FANART */
+.fanarts-page .fanart-card img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fanarts-page .fanart-card img:hover {
+  transform: scale(1.02);
+  border-color: #cccccc;
+}
+
+/* NOME DO AUTOR */
+.fanarts-page .fanart-card p {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #cccccc;
+  letter-spacing: 1px;
+}
+
+/* ANIMAÇÃO DE LOOP INFINITO */
+@keyframes scrollFanarts {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%); /* Move exatamente metade (a parte duplicada) */
+  }
+}
+
+/* ====================================
+   LIGHTBOX (EXIBIÇÃO EM TELA CHEIA)
+==================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none; /* Controlado pelo JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  border: 3px solid #ffffff;
+}
+
+/* Botão X para Fechar */
+.close-lightbox {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-family: 'VCR OSD Mono', monospace;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+
+.close-lightbox:hover {
+  transform: scale(1.2);
+}
+
+/* ELEMENTO DO SIFFRIN NO CANTO */
+.sifrin-miudo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 90px;
+  z-index: 10;
+  pointer-events: none; /* Não atrapalha cliques na tela */
+}
+
+/* Override para limpar sombras estranhas em textos internos */
+.no-glow {
+  text-shadow: none !important;
+}

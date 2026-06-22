@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>felyzito | Profile</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./style.css?v=1.9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <div class="fundo-estatico"></div>
+    <div class="overlay-animated"></div>
+
+    <div class="top-left-icon">
+        <img src="assets/favicon.png" alt="Icon">
+    </div>
+
+    <img src="assets/sifrin-miudo.png" alt="Siffrin Miúdo" class="sifrin-miudo">
+
+    <main class="main-container fade-in-up">
+        
+        <!-- ================= TELA 1: CARD PRINCIPAL ================= -->
+        <div id="tela-home" class="aba-conteudo ativa">
+            <div class="music-player-bar">
+                <span class="bc-logo"><i class="fa-brands fa-bandcamp"></i> bc</span>
+                <span class="music-url">omori.bandcamp.com/track/my-time</span>
+            </div>
+
+            <div class="search-row">
+                <button class="refresh-btn" title="Recarregar"><i class="fa-solid fa-rotate-right"></i></button>
+                <div class="search-box-decorator">
+                    <i class="fa-solid fa-magnifying-glass"></i> search...
+                </div>
+            </div>
+
+            <div class="profile-middle-block">
+                <div class="profile-col-left">
+                    <img src="assets/banner2.jpg" alt="Minha Foto de Perfil" class="pfp-img">
+                </div>
+                
+                <div class="description-col-center">
+                    <p>
+                        "A inteligência nos dá os meios para criar, mas é na presença e no riso dos amigos que encontramos o refúgio e a força para evoluir."
+                    </p>
+                </div>
+
+                <div class="plush-col-right">
+                    <img src="assets/sifrin-miudo.png" alt="Plush Toy" class="plush-img">
+                </div>
+            </div>
+
+            <div class="mid-social-bar">
+                <i class="fa-brands fa-spotify"></i>
+                <i class="fa-brands fa-discord"></i>
+                <i class="fa-brands fa-steam"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+
+            <div class="action-footer-row">
+                <button class="next-action-btn" onclick="mudarTela('tela-info')">
+                    <i class="fa-solid fa-arrow-right"></i> next
+                </button>
+
+                <div class="icon-buttons-group">
+                    <a href="https://discord.gg/seu-link-de-perguntas-ocultas" target="_blank" class="circle-action-btn" title="Enviar Mensagem Oculta">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://discord.gg/seu-link" target="_blank" class="circle-action-btn" title="Me Adicionar no Discord">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </a>
+                    <a href="https://in-stars-and-time-ptbr.github.io/ISAT-PTBR-SITE/" target="_blank" class="circle-action-btn" title="Status de Conexão">
+                        <i class="fa-solid fa-wifi"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TELA 2: SOBRE MIM (Texto Integrado) ================= -->
+        <div id="tela-info" class="aba-conteudo">
+            <div class="music-player-bar navigation-bar-top">
+                <span class="bc-logo"><i class="fa-solid fa-user"></i> USER PROFILE</span>
+                <span class="music-url">felyzito.sys</span>
+            </div>
+
+            <!-- Área de Conteúdo Pessoal Expandido -->
+            <div class="expanded-info-block">
+                <h2 class="info-title">Eeee Opa!</h2>
+                <p class="info-text">
+                    Eu sou o <strong>felyzito</strong>, mas você pode me chamar de <strong>Fely</strong> (ou Iago). Sou do Brasil, uso pronomes ele/dele e atuo como tradutor independente, sendo o criador e dono do projeto de tradução em PT-BR de <em>In Stars and Time (ISAT)</em>. 
+                </p>
+                <p class="info-text" style="margin-top: 10px;">
+                    Gosto de passar o meu tempo explorando narrativas profundas e editando vídeos de coisas de teor bem questionável que acontecem com meus amigos em call.
+                </p>
+                
+                <div class="divider-pixel"></div>
+
+                <h3 class="info-subtitle"><i class="fa-solid fa-heart"></i> O que me move</h3>
+                <p class="info-text">
+                    Sou movido por histórias bem escritas, especialmente aquelas que misturam emoção, mistério e um leve caos. O que me conquista de verdade não são mecânicas complexas, mas sim narrativas bem construídas, personagens marcantes e emoções que ficam. Mesmo sem ter jogado todos, conheço a fundo a história de universos como:
+                </p>
+                <p class="info-text" style="margin-top: 8px; color: #ffffff; font-style: italic;">
+                    Deltarune, In Stars And Time, OMORI, OneShot, Celeste, Undertale, Hollow Knight (e Silksong), Monument Valley I, II e III, animes e outras animações que apostam em sentimento, atmosfera e significado.
+                </p>
+
+                <div class="divider-pixel"></div>
+
+                <h3 class="info-subtitle"><i class="fa-solid fa-star"></i> Interesses & Hobbies</h3>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-pen-nib"></i> <strong>Criação:</strong> Escrita, criação de histórias, animações e jogos narrativos.</li>
+                    <li><i class="fa-solid fa-language"></i> <strong>Tradução:</strong> Tradução independente e localização de projetos.</li>
+                    <li><i class="fa-solid fa-gamepad"></i> <strong>Passatempos:</strong> Desenhar, jogar, assistir animações e explorar histórias que deixam marcas.</li>
+                </ul>
+            </div>
+
+            <!-- Rodapé com o botão de voltar -->
+            <div class="action-footer-row">
+                <button class="next-action-btn back-btn" onclick="mudarTela('tela-home')">
+                    <i class="fa-solid fa-arrow-left"></i> voltar
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <audio id="bg-music" src="assets/music.mp3" loop></audio>
+
+    <script>
+        function mudarTela(idDaTela) {
+            document.querySelectorAll('.aba-conteudo').forEach(aba => {
+                aba.classList.remove('ativa');
+            });
+            document.getElementById(idDaTela).classList.add('ativa');
+        }
+
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if(loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }
+        });
+    </script>
+</body>
+</html>

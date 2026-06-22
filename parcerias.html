@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcerias - ISAT pt-br</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./style.css?v=1.7">
+    <style>
+        /* Container centralizado para as parcerias */
+        .partners-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+        }
+
+        /* Card do canal parceiro centralizado */
+        .partner-card {
+            width: 100%;
+            border: 3px solid #ffffff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Foto do canal do YouTube */
+        .partner-avatar {
+            width: 130px;
+            height: 130px;
+            border: 3px solid #ffffff;
+            border-radius: 50%; /* Deixa a foto redonda como no YouTube */
+            object-fit: cover;
+            margin-bottom: 20px;
+            background-color: #000;
+        }
+
+        .partner-name {
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .partner-description {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .back-footer {
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .no-glow {
+            text-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fundo-estatico"></div>
+    <div class="overlay-animated"></div>
+
+    <div class="top-left-icon">
+        <a href="index.html"><img src="assets/favicon.png" alt="Voltar para o Início"></a>
+    </div>
+
+    <main class="main-container fade-in-up no-glow">
+        
+        <h2 class="section-title no-glow">PARCERIAS oficiais</h2>
+
+        <div class="partners-container">
+            
+            <div class="partner-card">
+                <img src="assets/DIP-RE.jpg" alt="Foto do Canal Parceiro" class="partner-avatar">
+                
+                <div class="partner-name">Dip_re</div>
+                
+                <p class="partner-description">
+                    Uma colaboração incrível dedicada a explorar e espalhar a história, os mistérios e a lore de In Stars And Time para a comunidade brasileira. Não deixe de conferir os vídeos especiais focados no universo do jogo!
+                </p>
+
+                <a href="https://www.youtube.com/watch?v=Z9r2RzGZGGI" target="_blank" class="btn" style="min-width: 180px;">ACESSAR VÍDEO</a>
+            </div>
+
+        </div>
+
+        <div class="back-footer">
+            <a href="index.html" class="btn">VOLTAR</a>
+        </div>
+
+    </main>
+
+</body>
+</html>

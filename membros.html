@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membros da Equipe - ISAT pt-br</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./style.css?v=1.7">
+    <style>
+        .team-section {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* CONTAINER DA IMAGEM DOS PERSONAGENS */
+        .character-sprites-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 10px 0;
+            width: 100%;
+        }
+
+        /* Renderiza a imagem inteira com pixel art nítida */
+        .team-banner-sprites {
+            max-width: 460px; /* Ajuste esse valor para aumentar ou diminuir a fileira na tela */
+            width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+        }
+
+        /* Estrutura do Painel de Membros (Carrossel) */
+        .carousel-container {
+            width: 100%;
+            max-width: 550px;
+            border: 3px solid #ffffff;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        /* Setas de navegação */
+        .carousel-arrow {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-family: 'VCR OSD Mono', monospace;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s ease;
+            padding: 10px;
+        }
+
+        .carousel-arrow:hover {
+            transform: scale(1.2);
+        }
+
+        /* Card do Membro Ativo */
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .member-avatar {
+            width: 16opx;
+            height: 160px;
+            border: 3px solid #ffffff;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .member-role {
+            font-size: 0.85rem;
+            color: #cccccc;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .member-status {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+            letter-spacing: 1px;
+        }
+
+        .back-footer {
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .no-glow {
+            text-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fundo-estatico"></div>
+    <div class="overlay-animated"></div>
+
+    <div class="top-left-icon">
+        <a href="index.html"><img src="assets/favicon.png" alt="Voltar para o Início"></a>
+    </div>
+
+    <main class="main-container fade-in-up no-glow">
+        
+        <h2 class="section-title no-glow">SOBRE A EQUIPE</h2>
+
+        <article class="game-description no-glow" style="max-width: 780px;">
+            <p>
+                Somos uma equipe independente de tradutores e revisores e moderadores dedicada à tradução de In Stars And Time para o português, com foco em qualidade, sensibilidade e respeito à obra original. Nosso trabalho vai além da tradução literal: buscamos preservar o tom emocional, a personalidade dos personagens e as nuances narrativas que tornam ISAT tão especial. Cada linha é revisada com cuidado, levando em conta contexto, consistência e experiência do jogador. O objetivo é simples — permitir que mais pessoas vivenciem a história de forma natural, imersiva e fiel, como se o jogo tivesse sido originalmente pensado em português.
+            </p>
+        </article>
+
+        <div class="character-sprites-container">
+            <img src="assets/equipe-line (1).png" alt="Equipe ISAT" class="team-banner-sprites">
+        </div>
+
+        <h2 class="game-title no-glow" style="font-size: 1.4rem; margin-bottom: 10px;">EQUIPE</h2>
+
+        <div class="carousel-container">
+            <button class="carousel-arrow" id="prev-btn">←</button>
+            
+            <div class="member-card">
+                <img src="assets/felyzito-avatar.png" alt="Felyzito" class="member-avatar">
+                <div class="member-name">Felyzito</div>
+                <div class="member-role">Tradutor</div>
+                <div class="member-status">Ativo</div>
+            </div>
+
+            <button class="carousel-arrow" id="next-btn">→</button>
+        </div>
+
+        <div class="back-footer">
+            <a href="index.html" class="btn">VOLTAR</a>
+        </div>
+
+    </main>
+
+    <script>
+        // Lista para gerenciar seus membros
+        const membros = [
+            { 
+                name: "Felyzito", 
+                role: "Tradutor", 
+                status: "Ativo", 
+                avatar: "assets/1-avatar.png" 
+            },
+            { 
+                name: "Starmiu", 
+                role: "Tradutora/Revisora", 
+                status: "Ativa", 
+                avatar: "assets/2-avatar.png" 
+            },
+            { 
+                name: "Crepioka", 
+                role: "Adm/Mod", 
+                status: "Ativo", 
+                avatar: "assets/3-avatar.png" 
+            },
+            { 
+                name: "a luna", 
+                role: "Programadora", 
+                status: "Recesso", 
+                avatar: "assets/4-avatar.png" 
+            },
+            { 
+                name: "Nervous charlotte", 
+                role: "Adm", 
+                status: "Ativa", 
+                avatar: "assets/5-avatar.png" 
+            },
+            { 
+                name: "RandomPerson", 
+                role: "Tradutor", 
+                status: "Ativo", 
+                avatar: "assets/6-avatar.png" 
+            },
+            { 
+                name: "Tales", 
+                role: "Ajudante", 
+                status: "Ativo", 
+                avatar: "assets/7-avatar.png" 
+            },
+            { 
+                name: "The Butler", 
+                role: "Ajudante", 
+                status: "Ativo", 
+                avatar: "assets/8-avatar.png" 
+            },
+            { 
+                name: "MayMega", 
+                role: "Revisora", 
+                status: "Ativa", 
+                avatar: "assets/9-avatar.png"              
+            }
+        ];
+
+        let indiceAtual = 0;
+
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const avatarImg = document.querySelector(".member-avatar");
+        const nameDiv = document.querySelector(".member-name");
+        const roleDiv = document.querySelector(".member-role");
+        const statusDiv = document.querySelector(".member-status");
+
+        function atualizarMembro(indice) {
+            const membro = membros[indice];
+            avatarImg.src = membro.avatar;
+            avatarImg.alt = membro.name;
+            nameDiv.textContent = membro.name;
+            roleDiv.textContent = membro.role;
+            statusDiv.textContent = membro.status;
+        }
+
+        prevBtn.addEventListener("click", () => {
+            indiceAtual--;
+            if (indiceAtual < 0) {
+                indiceAtual = membros.length - 1;
+            }
+            atualizarMembro(indiceAtual);
+        });
+
+        nextBtn.addEventListener("click", () => {
+            indiceAtual++;
+            if (indiceAtual >= membros.length) {
+                indiceAtual = 0;
+            }
+            atualizarMembro(indiceAtual);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (membros.length > 0) {
+                atualizarMembro(indiceAtual);
+            }
+        });
+    </script>
+</body>
+</html>
